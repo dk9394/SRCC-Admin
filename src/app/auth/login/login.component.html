@@ -21,7 +21,7 @@
         </div>
         <hr />
         <div class="form-group">
-          <button class="btn btn-primary login-btn" type="submit">Login</button>
+          <button class="btn btn-primary login-btn" type="submit" [disabled]="!loginForm.valid">Login</button>
         </div>
       </form>
     </div>

@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/SRCC-Admin",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
