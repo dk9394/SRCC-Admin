@@ -1,0 +1,45 @@
+@import './../../../../styles.scss';
+
+
+.product {
+    .product-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+
+        .title {
+            font-size: 175%;
+            color: $title-color;
+            margin: 0;
+            flex: 1;
+        }
+
+        .btns {
+            margin-left: 20px;
+
+            .btn {
+                margin-left: 10px;
+                min-width: 100px;
+            }
+        }
+    }
+
+    .info-block {
+        margin-bottom: 35px;
+
+        .table {
+            td {
+                width: 50%;
+            }
+        }
+
+        .section-title {
+            font-size: 150%;
+            margin: 0 0 15px;
+        }
+    }
+
+    .dull {
+        color: #a5a5a5;
+    }
+}

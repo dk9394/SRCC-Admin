@@ -1,0 +1,22 @@
+@import './../../../../styles.scss';
+
+$goBackHeight: 35px;
+
+.go-back {
+    background: #f5f5f5;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: $nav-height;
+    z-index: 999;
+    border-bottom: 1px solid $border-color;
+
+    .go-back-link {
+        cursor: pointer;
+        display: inline-block;
+        padding: 0 15px;
+        line-height: $goBackHeight;
+        text-decoration: none;
+        font-size: 110%;
+    }
+}

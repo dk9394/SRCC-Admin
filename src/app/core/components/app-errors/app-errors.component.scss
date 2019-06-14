@@ -1,0 +1,19 @@
+.alert {
+    border-radius: 0;
+
+    .block {
+        display: flex;
+        align-items: center;
+
+        .msg {
+            flex: 1;
+        }
+
+        .cross {
+            font-size: 125%;
+            margin-left: 20px;
+            cursor: pointer;
+            padding: 0 15px;
+        }
+    }
+}

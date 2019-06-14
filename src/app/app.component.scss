@@ -1,0 +1,28 @@
+@import './../styles.scss';
+
+.header {
+    height: $nav-height;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    background: rgba(#fff, .975);
+}
+
+.main {
+    min-height: 100vh;
+    padding-top: $nav-height;
+
+    .sub-main {
+        padding-top: 60px;
+    }
+
+    .app-alert-block {
+        position: fixed;
+        top: $nav-height;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+}

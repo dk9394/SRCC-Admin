@@ -1,0 +1,19 @@
+<section class="categories">
+  <div *ngIf="addNewCategory">
+    <app-add-category [availableCategories]="categories" (newCategoryStatus)="onAddNewCategory($event)">
+    </app-add-category>
+    <hr />
+  </div>
+
+  <h1 class="title">Available Categories</h1>
+  <app-loading *ngIf="isLoading"></app-loading>
+  <p *ngIf="categories?.length === 0">No product category found!</p>
+
+  <ul *ngIf="categories && !isLoading" class="list">
+    <li *ngFor="let cat of categories" (click)="onCategory(cat)">
+      {{ cat.name }}
+    </li>
+    <li *ngIf="!addNewCategory" (click)="addNewCategory = true" style="font-size: 200%;">+</li>
+  </ul>
+
+</section>

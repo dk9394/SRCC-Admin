@@ -1,0 +1,260 @@
+<app-go-back></app-go-back>
+
+<section class="product-form">
+  <h1 class="title" *ngIf="editMode">Edit <span>{{ formTitle }}</span></h1>
+  <h1 class="title" *ngIf="!editMode">Add product to <span>{{ formTitle }}</span></h1>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <section class="section-block">
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group" [class.has-error]="productForm.get('name').touched && !productForm.get('name').valid">
+            <label for="name">Name</label>
+            <input class="form-control" type="text" formControlName="name" appCapitalizeInput
+              placeholder="Product name ..." />
+            <div class="help-block" *ngIf="productForm.get('name').touched && !productForm.get('name').valid">
+              <span *ngIf="productForm.get('name').errors['required']">Product name is required.</span>
+              <span *ngIf="productForm.get('name').errors['minlength']">Atleast 3 characters required.</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <section class="warranty" formGroupName="warranty">
+            <div class="form-group">
+              <label for="name">Warranty</label>
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="years"
+                    [class.has-error]="productForm.get('warranty').get('years').touched && !productForm.get('warranty').get('years').valid">
+                    <select class="form-control" formControlName="years">
+                      <option value="null" selected>Years</option>
+                      <option [value]="year" *ngFor="let year of warrantyYears">{{ year }} years</option>
+                    </select>
+                    <div class="help-block"
+                      *ngIf="productForm.get('warranty').get('years').touched && !productForm.get('warranty').get('years').valid">
+                      <span>Invalid Years!</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-6">
+                  <div class="months"
+                    [class.has-error]="productForm.get('warranty').get('months').touched && !productForm.get('warranty').get('months').valid">
+                    <select class="form-control" formControlName="months">
+                      <option value="null" selected>Months</option>
+                      <option [value]="month" *ngFor="let month of warrantyMonths">{{ month }} months</option>
+                    </select>
+                    <div class="help-block"
+                      *ngIf="productForm.get('warranty').get('months').touched && !productForm.get('warranty').get('months').valid">
+                      <span>Invalid Months!</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label for="name">Images</label>
+            <div>
+              <button class="btn btn-default" (click)="imagesInputControl.click()" disabled>Select photos</button>
+              <input class="file-control" type="file" multiple formControlName="images" #imagesInputControl />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="internal-info section-block" formGroupName="internal_information">
+      <h2 class="section-title">Internal Information</h2>
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group"
+            [class.has-error]="productForm.get('internal_information').get('purchase_price').touched && !productForm.get('internal_information').get('purchase_price').valid">
+            <label for="name">Purchase Price</label>
+            <div class="currency">
+              <input class="form-control" type="number" formControlName="purchase_price" appPriceFormat
+                placeholder="0.00" />
+              <div class="help-block"
+                *ngIf="productForm.get('internal_information').get('purchase_price').touched && !productForm.get('internal_information').get('purchase_price').valid">
+                <span>Purchase Price is required.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="form-group"
+            [class.has-error]="productForm.get('internal_information').get('sale_price').touched && !productForm.get('internal_information').get('sale_price').valid">
+            <label for="name">Sale Price</label>
+            <div class="currency">
+              <input class="form-control currency" type="number" formControlName="sale_price" appPriceFormat
+                placeholder="0.00" />
+              <div class="help-block"
+                *ngIf="productForm.get('internal_information').get('sale_price').touched && !productForm.get('internal_information').get('sale_price').valid">
+                <span>Sale Price is required.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group"
+            [class.has-error]="productForm.get('internal_information').get('quantity').touched && !productForm.get('internal_information').get('quantity').valid">
+            <label for="name">Quantity</label>
+            <input class="form-control" type="number" formControlName="quantity" placeholder="Quantity ..." />
+            <div class="help-block"
+              *ngIf="productForm.get('internal_information').get('quantity').touched && !productForm.get('internal_information').get('quantity').valid">
+              <span>Quantity is required.</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="form-group"
+            [class.has-error]="productForm.get('internal_information').get('purchase_from').touched && !productForm.get('internal_information').get('purchase_from').valid">
+            <label for="name">Purchase From</label>
+            <input class="form-control" type="text" formControlName="purchase_from" appCapitalizeInput
+              placeholder="Purchased from ..." />
+            <div class="help-block"
+              *ngIf="productForm.get('internal_information').get('purchase_from').touched && !productForm.get('internal_information').get('purchase_from').valid">
+              <span>Purchase From is required.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group"
+            [class.has-error]="productForm.get('internal_information').get('purchase_date').touched && !productForm.get('internal_information').get('purchase_date').valid">
+            <label for="name">Purchase Date <span class="dull">(MM/DD/YYYY)</span></label>
+            <input class="form-control" type="date" min="2018-01-01" [max]="getTodayDate()"
+              formControlName="purchase_date" />
+            <div class="help-block"
+              *ngIf="productForm.get('internal_information').get('purchase_date').touched && !productForm.get('internal_information').get('purchase_date').valid">
+              <span>Purchase Date is required.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="form-group additional-info-toggle">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [checked]="additionalInfo"
+            (change)="onAdditionalInfoToggle(['general_information', 'technical_information'])" />Additional Information
+          ?
+        </label>
+        <div [class.has-error]="additionalInfo" *ngIf="additionalInfo">
+          <p class="help-block">Uncheck will delete <strong>Additional Information</strong> completely.</p>
+        </div>
+      </div>
+    </section>
+    <section class="additional-info" *ngIf="additionalInfo">
+      <section class="general-info section-block" formArrayName="general_information">
+        <h2 class="section-title">General Information</h2>
+        <div class="dynamic-block"
+          *ngFor="let genInfo of getFormArrayControls('general_information'); let index = index">
+          <div class="content">
+            <div class="row" [formGroupName]="index">
+              <div class="col-xs-6">
+                <div class="form-group"
+                  [class.has-error]="checkFormArrayControlValidity('general_information', index, 'field')">
+                  <label for="name">Field</label>
+                  <input class="form-control" type="text" formControlName="field" appCapitalizeInput
+                    placeholder="Field name ..." />
+                  <div class="help-block" *ngIf="checkFormArrayControlValidity('general_information', index, 'field')">
+                    <span *ngIf="getFormArrayControl('general_information', index, 'field').errors['required']">This
+                      field is required.</span>
+                    <span *ngIf="getFormArrayControl('general_information', index, 'field').errors['notUnique']">Field
+                      name already exists.</span>
+                    <span *ngIf="getFormArrayControl('general_information', index, 'field').errors['minlength']">Atleast
+                      2 characters required.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group"
+                  [class.has-error]="checkFormArrayControlValidity('general_information', index, 'value')">
+                  <label for="name">Value</label>
+                  <input class="form-control" type="text" formControlName="value" appCapitalizeInput
+                    placeholder="Field value ..." />
+                  <div class="help-block" *ngIf="checkFormArrayControlValidity('general_information', index, 'value')">
+                    <span>This field is required.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="delete-block">
+            <button class="btn btn-danger"
+              (click)="onRemoveArrayControl('general_information', index)">Delete</button>
+          </div>
+        </div>
+        <div class=" row">
+          <div class="col-xs-12">
+            <a class="btn btn-default add-more-btn" (click)="onAddNewFormArrayControls('general_information')">Add
+              Field</a>
+          </div>
+        </div>
+      </section>
+      <section class="technical-info section-block" formArrayName="technical_information">
+        <h2 class="section-title">Technical Information</h2>
+        <div class="dynamic-block"
+          *ngFor="let genInfo of getFormArrayControls('technical_information'); let index = index">
+          <div class="content">
+            <div class="row" [formGroupName]="index">
+              <div class="col-xs-6">
+                <div class="form-group"
+                  [class.has-error]="checkFormArrayControlValidity('technical_information', index, 'field')">
+                  <label for="name">Field</label>
+                  <input class="form-control" type="text" formControlName="field" appCapitalizeInput
+                    placeholder="Field name ..." />
+                  <div class="help-block"
+                    *ngIf="checkFormArrayControlValidity('technical_information', index, 'field')">
+                    <span *ngIf="getFormArrayControl('technical_information', index, 'field').errors['required']">This
+                      field is required.</span>
+                    <span *ngIf="getFormArrayControl('technical_information', index, 'field').errors['notUnique']">Field
+                      name already exists.</span>
+                    <span
+                      *ngIf="getFormArrayControl('technical_information', index, 'field').errors['minlength']">Atleast
+                      2 characters required.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group"
+                  [class.has-error]="checkFormArrayControlValidity('technical_information', index, 'value')">
+                  <label for="name">Value</label>
+                  <input class="form-control" type="text" formControlName="value" appCapitalizeInput
+                    placeholder="Field value ..." />
+                  <div class="help-block"
+                    *ngIf="checkFormArrayControlValidity('technical_information', index, 'value')">
+                    <span>This field is required.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="delete-block">
+            <button class="btn btn-danger"
+              (click)="onRemoveArrayControl('technical_information', index)">Delete</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <a class="btn btn-default add-more-btn" (click)="onAddNewFormArrayControls('technical_information')">Add
+              Field</a>
+          </div>
+        </div>
+      </section>
+    </section>
+    <div class="form-group text-center form-btns">
+      <button class="btn btn-default btn-lg cancel-btn" type="button" (click)="onCancel()">Cancel</button>
+      <button class="btn btn-primary btn-lg submit-btn" type="submit"
+        [disabled]="!productForm.valid || !productForm.dirty">
+        <span *ngIf="editMode">Update</span>
+        <span *ngIf="!editMode">Submit</span>
+      </button>
+    </div>
+  </form>
+</section>

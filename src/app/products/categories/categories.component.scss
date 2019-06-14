@@ -1,0 +1,35 @@
+@import './../../../styles.scss';
+
+$category-bg: $border-color;
+
+.categories {
+    .title {
+        font-size: 200%;
+        margin: 0 0 20px;
+    }
+
+    .list {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            min-width: 150px;
+            line-height: 70px;
+            padding: 0 20px;
+            box-sizing: border-box;
+            border: 1px solid $border-color;
+            margin: 0 20px 20px 0;
+            font-size: 125%;
+            text-align: center;
+            cursor: pointer;
+
+            &:hover {
+                background: $category-bg;
+            }
+        }
+    }
+}

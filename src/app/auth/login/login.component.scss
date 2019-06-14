@@ -1,0 +1,18 @@
+@import './../../../styles.scss';
+
+.login {
+    padding: 20px;
+    box-shadow: 0 0 10px #ddd;
+    border: 1px solid $border-color;
+    max-width: 400px;
+    margin: 0 auto;
+
+    .title {
+        margin: 0 0 20px;
+        font-size: 150%;
+    }
+
+    .login-btn {
+        min-width: 120px;
+    }
+}

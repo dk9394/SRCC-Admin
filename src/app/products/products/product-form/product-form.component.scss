@@ -1,0 +1,104 @@
+@import './../../../../styles.scss';
+
+
+.product-form {
+    .title {
+        font-size: 175%;
+        margin: 0 0 30px;
+
+        >span {
+            color: $title-color;
+        }
+    }
+
+    .section-block {
+        margin-bottom: 30px;
+        background: #f9f9f9;
+        padding: 20px 20px 10px;
+        border: 1px solid $border-color;
+
+        .section-title {
+            font-size: 150%;
+            padding-bottom: 20px;
+            border-bottom: 1px solid $border-color;
+            margin: 0 0 30px;
+        }
+
+        &.general-info,
+        &.technical-info {
+            .section-title {
+                margin: 0;
+            }
+        }
+
+        .dynamic-block {
+            display: flex;
+            align-items: flex-start;
+
+            &:first-of-type {
+                margin-top: 30px;
+            }
+
+            .content {
+                flex: 1;
+            }
+
+            .delete-block {
+                margin: 25px 0 0 20px;
+            }
+        }
+
+        .add-more-btn {
+            margin: 20px 0;
+        }
+
+        .dull {
+            color: #a5a5a5;
+            font-weight: normal;
+        }
+
+        .file-control {
+            width: 0;
+            height: 0;
+            float: left;
+            visibility: hidden;
+        }
+
+        .currency {
+            position: relative;
+
+            input {
+                padding-left: 45px;
+            }
+
+            &::before {
+                content: 'Rs';
+                position: absolute;
+                z-index: 1;
+                left: 1px;
+                top: 1px;
+                display: inline-block;
+                line-height: 32px;
+                background: #eaeaea;
+                border-radius: 4px 0 0 4px;
+                padding: 0 10px;
+            }
+        }
+    }
+
+    .additional-info-toggle {
+        margin: 30px 0;
+    }
+
+    .form-btns {
+        margin: 50px 0;
+
+        >.btn {
+            width: 180px;
+        }
+
+        .cancel-btn {
+            margin-right: 20px;
+        }
+    }
+}

@@ -1,0 +1,51 @@
+<app-go-back></app-go-back>
+
+<section class="products-list">
+  <section class="product-header">
+    <h1 class="title">{{ category.name }}</h1>
+    <div class="btns">
+      <button type="button" class="btn btn-primary" (click)="onAddProduct()">Add Product</button>
+      <button type="button" class="btn btn-danger" (click)="onDeleteCategory()">Delete Category</button>
+    </div>
+  </section>
+
+  <section class="products">
+    <div class="table-responsive">
+      <table class="table table-striped table-hover table-bordered"
+        *ngIf="products && !isLoading && products.length > 0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Warranty</th>
+            <th>Purchase Date <br /> <span class="dull">(YYYY-MM-DD)</span></th>
+            <th>Purchase From</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products; let index = index" (click)="onProduct(product)">
+            <td>{{ index + 1 }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.internal_information.quantity }}</td>
+            <td>{{ product.internal_information.sale_price | currency: 'INR' }}</td>
+            <td>
+              <div *ngIf="product?.warranty">
+                <span *ngIf="product?.warranty?.years">{{ product.warranty?.years }} years</span>
+                <span *ngIf="product?.warranty?.years && product?.warranty?.months">&nbsp;-&nbsp;</span>
+                <span *ngIf="product?.warranty?.months">{{ product.warranty?.months }} months</span>
+                <span *ngIf="!product?.warranty?.years && !product?.warranty?.months">N/A</span>
+              </div>
+            </td>
+            <td>{{ product.internal_information.purchase_date }}</td>
+            <td>{{ product.internal_information.purchase_from }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <app-loading *ngIf="isLoading"></app-loading>
+    <p *ngIf="products?.length === 0">No products found</p>
+  </section>
+</section>

@@ -1,0 +1,20 @@
+<section class="alert" [ngClass]="{'alert-danger': errorMsg, 'alert-success': successMsg}"
+  *ngIf="errorMsg || successMsg">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <section class="block">
+          <div class="msg">
+            <span *ngIf="errorMsg">
+              <strong>{{ errorMsg.subject }}</strong> {{ errorMsg.message }}
+            </span>
+            <span *ngIf="successMsg">
+              <strong>{{ successMsg.subject }}</strong> {{ successMsg.message }}
+            </span>
+          </div>
+          <span class="cross glyphicon glyphicon-remove" (click)="onCross()"></span>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>

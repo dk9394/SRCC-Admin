@@ -1,0 +1,29 @@
+<div class="login">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="title">Login Form</h1>
+      <hr />
+      <form (ngSubmit)="signInUser(loginForm)" #loginForm="ngForm" autocomplete="off">
+        <div class="form-group" [class.has-error]="email.touched && !email.valid">
+          <label for="email">Email</label>
+          <input type="email" id="email" class="form-control" name="email" ngModel #email="ngModel" required email
+            autocomplete="off" />
+          <p class="help-block" *ngIf="email.touched && !email.valid">
+            <span *ngIf="email.errors['required']">This is required field.</span>
+            <span *ngIf="email.errors['email']">Invalid email!.</span>
+          </p>
+        </div>
+        <div class="form-group" [class.has-error]="password.touched && !password.valid">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control" name="password" ngModel #password="ngModel" required
+            autocomplete="off" />
+          <p class="help-block" *ngIf="password.touched && !password.valid">This is required field.</p>
+        </div>
+        <hr />
+        <div class="form-group">
+          <button class="btn btn-primary login-btn" type="submit">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

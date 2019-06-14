@@ -1,0 +1,27 @@
+@import './../../../../styles.scss';
+
+
+.add-category {
+    border: 1px solid $border-color;
+    padding: 20px;
+    background: #fafafa;
+
+    .title {
+        font-size: 150%;
+        margin: 0 0 20px;
+    }
+
+    .controls {
+        display: flex;
+        align-items: center;
+
+        .form-control {
+            flex: 1;
+        }
+
+        .add-cat-btn {
+            min-width: 150px;
+            margin-left: 20px;
+        }
+    }
+}

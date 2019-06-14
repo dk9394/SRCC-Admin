@@ -1,0 +1,30 @@
+<header class="app-header" appPageScroll>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <section class="header">
+          <a class="logo">
+            <app-logo></app-logo>
+          </a>
+          <nav class="nav-links">
+            <ul class="main">
+              <ng-container *ngIf="userSignedIn">
+                <li *ngFor="let nav of navLinks">
+                  <a [routerLink]="[nav.link]" routerLinkActive="active">{{ nav.name }}</a>
+                </li>
+              </ng-container>
+            </ul>
+            <ul class="side">
+              <li *ngIf="!userSignedIn">
+                <a [routerLink]="['/auth']" routerLinkActive="active">Login</a>
+              </li>
+              <li *ngIf="userSignedIn">
+                <a [routerLink]="['/auth', 'logout']" routerLinkActive="active">Logout</a>
+              </li>
+            </ul>
+          </nav>
+        </section>
+      </div>
+    </div>
+  </div>
+</header>

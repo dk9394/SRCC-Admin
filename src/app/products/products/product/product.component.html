@@ -1,0 +1,95 @@
+<app-go-back></app-go-back>
+
+<app-loading *ngIf="isLoading"></app-loading>
+
+<section class="product" *ngIf="product">
+  <section class="product-header">
+    <h1 class="title">{{ product.name }}</h1>
+    <div class="btns">
+      <button type="button" class="btn btn-default" (click)="onEditProduct()">Edit</button>
+      <button type="button" class="btn btn-danger" (click)="onDeleteProduct()">Delete</button>
+    </div>
+  </section>
+
+  <section class="info-block">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td>{{ product?.name }}</td>
+          </tr>
+          <tr>
+            <td>Warranty</td>
+            <td>
+              <div *ngIf="product?.warranty">
+                <span *ngIf="product?.warranty?.years">{{ product.warranty?.years }} years</span>
+                <span *ngIf="product?.warranty?.years && product?.warranty?.months">&nbsp;-&nbsp;</span>
+                <span *ngIf="product?.warranty?.months">{{ product.warranty?.months }} months</span>
+                <span *ngIf="!product?.warranty?.years && !product?.warranty?.months">N/A</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="info-block">
+    <h2 class="section-title">Internal Information</h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <tbody>
+          <tr>
+            <td>Quantity</td>
+            <td>{{ product.internal_information?.quantity }}</td>
+          </tr>
+          <tr>
+            <td>Purchase Price</td>
+            <td>{{ product.internal_information?.purchase_price | currency: 'INR' }}</td>
+          </tr>
+          <tr>
+            <td>Sale Price</td>
+            <td>{{ product.internal_information?.sale_price | currency: 'INR' }}</td>
+          </tr>
+          <tr>
+            <td>Purchase Date <span class="dull">(YYYY-MM-DD)</span></td>
+            <td>{{ product.internal_information?.purchase_date }}</td>
+          </tr>
+          <tr>
+            <td>Purchase From</td>
+            <td>{{ product.internal_information?.purchase_from }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="info-block" *ngIf="product.general_information?.length">
+    <h2 class="section-title">General Information</h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <tbody>
+          <tr *ngFor="let prod of product.general_information">
+            <td>{{ prod.field }}</td>
+            <td>{{ prod.value }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="info-block" *ngIf="product.technical_information?.length">
+    <h2 class="section-title">Technical Information</h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <tbody>
+          <tr *ngFor="let prod of product.technical_information">
+            <td>{{ prod.field }}</td>
+            <td>{{ prod.value }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</section>
