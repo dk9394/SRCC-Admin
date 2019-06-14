@@ -6,7 +6,7 @@
     left: 0;
     right: 0;
     top: 0;
-    z-index: 999;
+    z-index: 1001;
     background: rgba(#fff, .975);
 }
 
@@ -24,5 +24,11 @@
         left: 0;
         right: 0;
         z-index: 1000;
+    }
+}
+
+@media (min-width: $tablet) {
+    .header {
+        z-index: 999;
     }
 }

@@ -224,7 +224,7 @@ export class ProductFormComponent implements OnInit, CanComponentDeactivate {
   }
 
   canDeactivate() {
-    if ((this.productForm.dirty || !this.productForm.valid) && !this.isFormSaved) {
+    if (this.productForm.dirty && !this.isFormSaved) {
       return confirm('Are you sure, want to continue with unsaved changes?');
     }
     return true;

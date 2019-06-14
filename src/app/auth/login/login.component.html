@@ -1,7 +1,7 @@
 <div class="login">
   <div class="row">
     <div class="col-xs-12">
-      <h1 class="title">Login Form</h1>
+      <h1 class="page-title title">Login Form</h1>
       <hr />
       <form (ngSubmit)="signInUser(loginForm)" #loginForm="ngForm" autocomplete="off">
         <div class="form-group" [class.has-error]="email.touched && !email.valid">

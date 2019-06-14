@@ -1,8 +1,8 @@
 <app-go-back></app-go-back>
 
 <section class="product-form">
-  <h1 class="title" *ngIf="editMode">Edit <span>{{ formTitle }}</span></h1>
-  <h1 class="title" *ngIf="!editMode">Add product to <span>{{ formTitle }}</span></h1>
+  <h1 class="page-title title" *ngIf="editMode">Edit <span>{{ formTitle }}</span></h1>
+  <h1 class="page-title title" *ngIf="!editMode">Add new <span>{{ formTitle }}</span></h1>
   <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
     <section class="section-block">
       <div class="row">

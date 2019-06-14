@@ -4,6 +4,56 @@ $nav-height: 70px;
 $breadcrumb-height: 40px;
 $title-color: #337ab7;
 
+
+// Breakpoints
+$mobile: 520px;
+$tablet: 767px;
+$desktop: 992px;
+
 .form-group {
     margin-bottom: 20px;
+}
+
+
+// Common classes
+.page-title {
+    font-size: 175%;
+}
+
+.section-title {
+    font-size: 125%;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+@media (min-width: $tablet) {
+    .page-title {
+        font-size: 200%;
+    }
+
+    .section-title {
+        font-size: 150%;
+    }
+}
+
+// Bootstrap overwrite
+[class^="col-"] {
+    padding: 0 5px;
+}
+
+.row {
+    margin: 0 -5px;
+}
+
+
+@media (min-width: $mobile) {
+    [class^="col-"] {
+        padding: 0 15px;
+    }
+
+    .row {
+        margin: 0 -15px;
+    }
 }

@@ -14,6 +14,7 @@ export class MainHeaderComponent implements OnInit {
   navLinks: INavLink[] = Constants.appNavLinks;
   userSignedIn: boolean;
   isNavigationCancelEvent: boolean;
+  activeHamburger: boolean;
 
   constructor(private authService: AuthService) { }
 
@@ -22,6 +23,10 @@ export class MainHeaderComponent implements OnInit {
       .subscribe((status: boolean) => {
         this.userSignedIn = status;
       });
+  }
+
+  onMobileNav() {
+    this.activeHamburger = !this.activeHamburger;
   }
 
 }

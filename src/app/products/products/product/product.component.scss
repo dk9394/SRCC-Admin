@@ -8,7 +8,6 @@
         margin-bottom: 40px;
 
         .title {
-            font-size: 175%;
             color: $title-color;
             margin: 0;
             flex: 1;
@@ -18,8 +17,14 @@
             margin-left: 20px;
 
             .btn {
-                margin-left: 10px;
+                display: block;
                 min-width: 100px;
+                margin-bottom: 5px;
+                width: 100%;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
             }
         }
     }
@@ -34,12 +39,40 @@
         }
 
         .section-title {
-            font-size: 150%;
             margin: 0 0 15px;
         }
     }
 
     .dull {
+        display: block;
+        margin-top: 5px;
         color: #a5a5a5;
+    }
+}
+
+@media (min-width: $mobile) {
+    .product {
+        .product-header {
+            .btns {
+                margin-left: 20px;
+
+                .btn {
+                    display: inline-block;
+                    margin: 0 10px 0 0;
+                    min-width: 100px;
+                    width: auto;
+
+                    &:last-child {
+                        margin: 0;
+                    }
+
+                }
+            }
+        }
+
+        .dull {
+            display: inline;
+            margin: 0;
+        }
     }
 }

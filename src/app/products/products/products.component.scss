@@ -8,7 +8,6 @@
         margin-bottom: 30px;
 
         .title {
-            font-size: 175%;
             color: $title-color;
             margin: 0;
             flex: 1;
@@ -18,16 +17,20 @@
             margin-left: 20px;
 
             .btn {
-                margin-left: 10px;
+                display: block;
                 min-width: 100px;
+                margin-bottom: 5px;
+                width: 100%;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
             }
         }
     }
 
     .products {
         .table {
-            min-width: 940px;
-
             thead {
                 th {
                     padding: 10px 8px 20px;
@@ -50,5 +53,47 @@
         font-size: 90%;
         left: 8px;
         bottom: 2px;
+    }
+
+    .no-mob {
+        display: none;
+    }
+}
+
+@media (min-width: $mobile) {
+    .products-list {
+        .product-header {
+            .btns {
+                margin-left: 20px;
+
+                .btn {
+                    display: inline-block;
+                    margin: 0 10px 0 0;
+                    min-width: 100px;
+                    width: auto;
+
+                    &:last-child {
+                        margin: 0;
+                    }
+
+                }
+            }
+        }
+
+        .no-mob {
+            display: table-cell;
+        }
+
+        .no-tab {
+            display: none;
+        }
+    }
+}
+
+@media (min-width: $tablet) {
+    .products-list {
+        .no-tab {
+            display: table-cell;
+        }
     }
 }

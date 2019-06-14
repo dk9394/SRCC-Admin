@@ -3,7 +3,6 @@
 
 .product-form {
     .title {
-        font-size: 175%;
         margin: 0 0 30px;
 
         >span {
@@ -12,13 +11,11 @@
     }
 
     .section-block {
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         background: #f9f9f9;
-        padding: 20px 20px 10px;
-        border: 1px solid $border-color;
+        padding: 20px 10px;
 
         .section-title {
-            font-size: 150%;
             padding-bottom: 20px;
             border-bottom: 1px solid $border-color;
             margin: 0 0 30px;
@@ -44,7 +41,7 @@
             }
 
             .delete-block {
-                margin: 25px 0 0 20px;
+                margin: 25px 0 0 10px;
             }
         }
 
@@ -94,11 +91,40 @@
         margin: 50px 0;
 
         >.btn {
-            width: 180px;
+            width: 100%;
+            max-width: 300px;
         }
 
         .cancel-btn {
-            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+@media (min-width: $mobile) {
+    .product-form {
+
+        .form-btns {
+
+            >.btn {
+                width: 180px;
+            }
+
+            .cancel-btn {
+                margin: 0 20px 0 0;
+            }
+        }
+
+        .section-block {
+            margin-bottom: 30px;
+            padding: 20px 20px 10px;
+            border: 1px solid $border-color;
+
+            .dynamic-block {
+                .delete-block {
+                    margin: 25px 0 0 20px;
+                }
+            }
         }
     }
 }

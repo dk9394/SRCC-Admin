@@ -2,7 +2,7 @@
 
 <section class="products-list">
   <section class="product-header">
-    <h1 class="title">{{ category.name }}</h1>
+    <h1 class="page-title title">{{ category.name }}</h1>
     <div class="btns">
       <button type="button" class="btn btn-primary" (click)="onAddProduct()">Add Product</button>
       <button type="button" class="btn btn-danger" (click)="onDeleteCategory()">Delete Category</button>
@@ -19,9 +19,9 @@
             <th>Name</th>
             <th>Quantity</th>
             <th>Price</th>
-            <th>Warranty</th>
-            <th>Purchase Date <br /> <span class="dull">(YYYY-MM-DD)</span></th>
-            <th>Purchase From</th>
+            <th class="no-mob">Warranty</th>
+            <th class="no-mob no-tab">Purchase Date <br /> <span class="dull">(YYYY-MM-DD)</span></th>
+            <th class="no-mob no-tab">Purchase From</th>
           </tr>
         </thead>
         <tbody>
@@ -30,7 +30,7 @@
             <td>{{ product.name }}</td>
             <td>{{ product.internal_information.quantity }}</td>
             <td>{{ product.internal_information.sale_price | currency: 'INR' }}</td>
-            <td>
+            <td class="no-mob">
               <div *ngIf="product?.warranty">
                 <span *ngIf="product?.warranty?.years">{{ product.warranty?.years }} years</span>
                 <span *ngIf="product?.warranty?.years && product?.warranty?.months">&nbsp;-&nbsp;</span>
@@ -38,8 +38,8 @@
                 <span *ngIf="!product?.warranty?.years && !product?.warranty?.months">N/A</span>
               </div>
             </td>
-            <td>{{ product.internal_information.purchase_date }}</td>
-            <td>{{ product.internal_information.purchase_from }}</td>
+            <td class="no-mob no-tab">{{ product.internal_information.purchase_date }}</td>
+            <td class="no-mob no-tab">{{ product.internal_information.purchase_from }}</td>
           </tr>
         </tbody>
       </table>
