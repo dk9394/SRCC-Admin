@@ -1,12 +1,12 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyCKKzdwXiRx53hJ19h6OvOgdf25Qwon2_E',
-    authDomain: 'srcc-admin-4be4c.firebaseapp.com',
-    databaseURL: 'https://srcc-admin-4be4c.firebaseio.com',
-    projectId: 'srcc-admin-4be4c',
-    storageBucket: 'srcc-admin-4be4c.appspot.com',
-    messagingSenderId: '258769680287',
-    appId: '1:258769680287:web:e418f12f9210bed3'
+    apiKey: 'AIzaSyD96GWtv_5qHVAOS4lb10zpW6ubwDz2_XE',
+    authDomain: 'srccshop-admin.firebaseapp.com',
+    databaseURL: 'https://srccshop-admin.firebaseio.com',
+    projectId: 'srccshop-admin',
+    storageBucket: 'srccshop-admin.appspot.com',
+    messagingSenderId: '611748924588',
+    appId: '1:611748924588:web:f84c78b73f990c12'
   }
 };

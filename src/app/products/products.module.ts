@@ -10,6 +10,7 @@ import { AddCategoryComponent } from './categories/add-category/add-category.com
 import { CoreModule } from '../core/core.module';
 import { SharedModule } from '../shared/shared.module';
 import { ProductFormComponent } from './products/product-form/product-form.component';
+import { ProductsLandingComponent } from './products-landing/products-landing.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ProductFormComponent } from './products/product-form/product-form.compo
     ProductsComponent,
     ProductComponent,
     AddCategoryComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductsLandingComponent
   ],
   imports: [
     CommonModule,

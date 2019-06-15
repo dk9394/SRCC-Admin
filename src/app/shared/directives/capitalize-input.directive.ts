@@ -12,7 +12,7 @@ export class CapitalizeInputDirective {
   @HostListener('keyup', ['$event'])
   onkeyup(e) {
     const value: string = e.target.value;
-    this.elRef.nativeElement.value = value.slice(0, 1).toUpperCase() + value.slice(1);
+    this.elRef.nativeElement.value = value.split(' ').map(v => v.slice(0, 1).toUpperCase() + v.slice(1)).join(' ');
   }
 
 }

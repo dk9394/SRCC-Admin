@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanLoad, Route, UrlSegment, Router } from '@angular/router';
+import { CanLoad, Route, UrlSegment, Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { AuthService } from 'src/app/auth/auth.service';
@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanLoad {
+export class AuthGuard implements CanLoad, CanActivate {
   next: boolean;
 
   constructor(
@@ -18,6 +18,18 @@ export class AuthGuard implements CanLoad {
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
+    this.checkLoginStatus();
+    return this.next;
+  }
+
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    this.checkLoginStatus();
+    return this.next;
+  }
+
+  private checkLoginStatus() {
     this.authService.getSignInStatus()
       .subscribe((status) => {
         if (!status) {
@@ -26,6 +38,6 @@ export class AuthGuard implements CanLoad {
         }
         this.next = true;
       });
-    return this.next;
   }
+
 }

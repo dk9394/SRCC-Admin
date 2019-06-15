@@ -6,7 +6,8 @@
           <a class="logo">
             <app-logo></app-logo>
           </a>
-          <span class="glyphicon glyphicon-menu-hamburger hamburger-menu" (click)="onMobileNav()"></span>
+          <span class="glyphicon glyphicon-menu-hamburger hamburger-menu" [class.active]="activeHamburger"
+            (click)="onMobileNav()"></span>
           <nav class="nav-links" [class.slide-in]="activeHamburger">
             <ul class="main">
               <ng-container *ngIf="userSignedIn">
