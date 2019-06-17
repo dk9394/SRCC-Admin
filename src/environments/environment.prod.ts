@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  userEmail: 'ksawan46@gmail.com',
   firebase: {
     apiKey: 'AIzaSyD96GWtv_5qHVAOS4lb10zpW6ubwDz2_XE',
     authDomain: 'srccshop-admin.firebaseapp.com',

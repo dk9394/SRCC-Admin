@@ -28,6 +28,10 @@ $category-bg: $border-color;
             cursor: pointer;
             position: relative;
 
+            &.add-new {
+                font-size: 300%;
+            }
+
             &:hover {
                 background: $category-bg;
             }

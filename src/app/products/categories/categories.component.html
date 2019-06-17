@@ -14,9 +14,10 @@
   <ul *ngIf="categories && !isLoading" class="list">
     <li *ngFor="let cat of categories" (click)="onCategory(cat)">
       {{ cat.name }}
-      <span *ngIf="!addNewCategory" class="glyphicon glyphicon-pencil edit" (click)="onEditCategory(cat, $event)"></span>
+      <span *ngIf="!addNewCategory && isAdmin" class="glyphicon glyphicon-pencil edit"
+        (click)="onEditCategory(cat, $event)"></span>
     </li>
-    <li *ngIf="!addNewCategory" (click)="onAddNewCategory()" style="font-size: 200%;">+</li>
+    <li *ngIf="!addNewCategory && isAdmin" (click)="onAddNewCategory()" class="add-new">+</li>
   </ul>
 
 </section>

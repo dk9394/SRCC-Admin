@@ -9,6 +9,7 @@ import { ICategory } from '../categories/category.model';
 import { CategoriesService } from '../categories/categories.service';
 import { HandleSubscriptionService } from 'src/app/core/services/handle-subscription.service';
 import { SpinnerService } from 'src/app/core/components/page-spinner/spinner.service';
+import { AdminService } from 'src/app/core/services/admin.service';
 
 @Component({
   selector: 'app-products',
@@ -20,6 +21,7 @@ export class ProductsComponent implements OnInit {
   category: ICategory;
   isLoading: boolean;
   prodsSub: Subscription;
+  isAdmin: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,9 +31,11 @@ export class ProductsComponent implements OnInit {
     private handleSubs: HandleSubscriptionService,
     private spinner: SpinnerService,
     private router: Router,
+    private adminService: AdminService
   ) { }
 
   ngOnInit() {
+    this.isAdmin = this.adminService.admin;
     this.isLoading = true;
     this.category = this.catService.currentCategory;
     this.getProducts();

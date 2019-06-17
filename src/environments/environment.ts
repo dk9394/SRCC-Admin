@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  userEmail: 'admin@test.com',
   firebase: {
     apiKey: 'AIzaSyAJD8r45yNXQL6RItYiwJWoGs13kMgfWz8',
     authDomain: 'srcc-admin-9394.firebaseapp.com',

@@ -6,6 +6,7 @@ import { ICategory } from './category.model';
 import { CategoriesService } from './categories.service';
 import { AppErrorService } from 'src/app/core/components/app-errors/app-error.service';
 import { HandleSubscriptionService } from 'src/app/core/services/handle-subscription.service';
+import { AdminService } from 'src/app/core/services/admin.service';
 
 @Component({
   selector: 'app-categories',
@@ -18,16 +19,19 @@ export class CategoriesComponent implements OnInit {
   addNewCategory: boolean;
   catsSub: Subscription;
   editCategory: ICategory;
+  isAdmin: boolean;
 
   constructor(
     private catService: CategoriesService,
     private router: Router,
     private route: ActivatedRoute,
     private appErrService: AppErrorService,
-    private handleSubs: HandleSubscriptionService
+    private handleSubs: HandleSubscriptionService,
+    private adminService: AdminService
   ) { }
 
   ngOnInit() {
+    this.isAdmin = this.adminService.admin;
     this.isLoading = true;
     this.getAllCategories();
   }

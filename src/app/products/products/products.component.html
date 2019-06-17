@@ -3,7 +3,7 @@
 <section class="products-list">
   <section class="product-header">
     <h1 class="page-title title">{{ category.name }}</h1>
-    <div class="btns">
+    <div class="btns" *ngIf="isAdmin">
       <button type="button" class="btn btn-primary" (click)="onAddProduct()">Add Product</button>
       <button type="button" class="btn btn-danger" (click)="onDeleteCategory()">Delete Category</button>
     </div>

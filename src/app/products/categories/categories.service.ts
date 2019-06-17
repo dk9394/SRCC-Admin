@@ -49,7 +49,7 @@ export class CategoriesService {
       })
       .catch(err => {
         this.appErrService.handleError({ subject: '', message: err.code });
-      })
+      });
   }
 
   removeCategory(categoryId: string) {

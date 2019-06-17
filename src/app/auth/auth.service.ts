@@ -5,6 +5,8 @@ import { BehaviorSubject } from 'rxjs';
 
 import { AppErrorService } from '../core/components/app-errors/app-error.service';
 import { HandleSubscriptionService } from '../core/services/handle-subscription.service';
+import { environment } from 'src/environments/environment';
+import { AdminService } from '../core/services/admin.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +18,18 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private router: Router,
     private appErrService: AppErrorService,
-    private handleSubs: HandleSubscriptionService
+    private handleSubs: HandleSubscriptionService,
+    private adminService: AdminService
   ) { }
 
   signIn(email: string, password: string) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then(res => {
+        if (res.user.email === environment.userEmail) {
+          this.adminService.admin = true;
+        } else {
+          this.adminService.admin = false;
+        }
         this.signInStatus.next(true);
         this.router.navigate(['/products']);
         this.appErrService.handleSuccess({ subject: 'Login', message: 'successful.' });

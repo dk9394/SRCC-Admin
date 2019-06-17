@@ -5,7 +5,7 @@
 <section class="product" *ngIf="product">
   <section class="product-header">
     <h1 class="page-title title">{{ product.name }}</h1>
-    <div class="btns">
+    <div class="btns" *ngIf="isAdmin">
       <button type="button" class="btn btn-default" (click)="onEditProduct()">Edit</button>
       <button type="button" class="btn btn-danger" (click)="onDeleteProduct()">Delete</button>
     </div>

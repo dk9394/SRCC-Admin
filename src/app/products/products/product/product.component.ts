@@ -8,6 +8,7 @@ import { AppErrorService } from 'src/app/core/components/app-errors/app-error.se
 import { CategoriesService } from '../../categories/categories.service';
 import { SpinnerService } from 'src/app/core/components/page-spinner/spinner.service';
 import { HandleSubscriptionService } from 'src/app/core/services/handle-subscription.service';
+import { AdminService } from 'src/app/core/services/admin.service';
 
 @Component({
   selector: 'app-product',
@@ -18,6 +19,7 @@ export class ProductComponent implements OnInit {
   product: IProduct;
   prodSub: Subscription;
   isLoading: boolean;
+  isAdmin: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,10 +28,12 @@ export class ProductComponent implements OnInit {
     private catService: CategoriesService,
     private handleSubscriptions: HandleSubscriptionService,
     private spinner: SpinnerService,
-    private router: Router
+    private router: Router,
+    private adminService: AdminService
   ) { }
 
   ngOnInit() {
+    this.isAdmin = this.adminService.admin;
     this.isLoading = true;
     const productId = this.route.snapshot.paramMap.get('productId');
     this.prodSub = this.productService.fetchProduct(this.catService.currentCategory.id, productId)
