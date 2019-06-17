@@ -30,7 +30,8 @@ export class AddCategoryComponent implements OnInit {
   }
 
   onAdd(form: NgForm) {
-    if (!this.availableCategories.find(cat => cat.name.toLowerCase() === form.value.name.toLowerCase())) {
+    if (!this.availableCategories.find(cat => cat.name.toLowerCase() === form.value.name.toLowerCase().trim())) {
+      form.value.name = form.value.name.trim();
       if (this.editCategory) {
         this.catService.updateCategory(this.editCategory.id, form.value);
       } else {
