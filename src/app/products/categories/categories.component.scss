@@ -26,9 +26,21 @@ $category-bg: $border-color;
             font-size: 125%;
             text-align: center;
             cursor: pointer;
+            position: relative;
 
             &:hover {
                 background: $category-bg;
+            }
+
+            .edit {
+                position: absolute;
+                z-index: 1;
+                display: block;
+                padding: 5px 10px 10px 5px;
+                left: 0;
+                top: 0;
+                font-size: 75%;
+                color: $title-color;
             }
         }
     }

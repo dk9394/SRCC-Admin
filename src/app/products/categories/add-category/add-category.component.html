@@ -1,11 +1,21 @@
 <section class="add-category">
-  <h1 class="section-title title">Add new Category</h1>
+  <h1 class="section-title title">
+    <span *ngIf="!editCategory">Add new Category</span>
+    <span *ngIf="editCategory">Update Category</span>
+  </h1>
   <form (ngSubmit)="onAdd(f)" #f="ngForm" autocomplete="off">
     <div class="form-group" [class.has-error]="newCategory.touched && !newCategory.valid">
       <div class="controls">
         <input type="text" class="form-control" name="name" [(ngModel)]="categoryName" #newCategory="ngModel" required
           minlength="3" placeholder="Enter new Category name ..." appCapitalizeInput autocomplete="off" />
-        <button class="btn btn-primary add-cat-btn" type="submit" [disabled]="!newCategory.valid">Add Category</button>
+        <div class="btns">
+          <button class="btn btn-primary add-cat-btn" type="submit"
+            [disabled]="!(newCategory.valid && checkNamesEquality())">
+            <span *ngIf="!editCategory">Add Category</span>
+            <span *ngIf="editCategory">Update Category</span>
+          </button>
+          <button class="btn btn-default" type="button" (click)="onCancel()">Cancel</button>
+        </div>
       </div>
       <p class="help-block" *ngIf="newCategory.touched && !newCategory.valid">
         <span *ngIf="newCategory.errors['minlength']">Atleast 3 characters required.</span>

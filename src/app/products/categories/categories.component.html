@@ -1,6 +1,8 @@
 <section class="categories">
+
   <div *ngIf="addNewCategory">
-    <app-add-category [availableCategories]="categories" (newCategoryStatus)="onAddNewCategory($event)">
+    <app-add-category [availableCategories]="categories" (newCategoryStatus)="onCategoryActionStatus($event)"
+      [editCategory]="editCategory">
     </app-add-category>
     <hr />
   </div>
@@ -12,8 +14,9 @@
   <ul *ngIf="categories && !isLoading" class="list">
     <li *ngFor="let cat of categories" (click)="onCategory(cat)">
       {{ cat.name }}
+      <span *ngIf="!addNewCategory" class="glyphicon glyphicon-pencil edit" (click)="onEditCategory(cat, $event)"></span>
     </li>
-    <li *ngIf="!addNewCategory" (click)="addNewCategory = true" style="font-size: 200%;">+</li>
+    <li *ngIf="!addNewCategory" (click)="onAddNewCategory()" style="font-size: 200%;">+</li>
   </ul>
 
 </section>

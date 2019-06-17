@@ -42,6 +42,16 @@ export class CategoriesService {
       });
   }
 
+  updateCategory(categoryId: string, category: ICategory) {
+    this.afs.collection(this.collection).doc(categoryId).update(category)
+      .then(res => {
+        this.appErrService.handleSuccess({ subject: category.name, message: 'is updated successfully.' });
+      })
+      .catch(err => {
+        this.appErrService.handleError({ subject: '', message: err.code });
+      })
+  }
+
   removeCategory(categoryId: string) {
     return this.afs.collection(this.collection).doc(categoryId).delete();
   }

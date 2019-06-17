@@ -13,6 +13,7 @@ import { AppErrorService } from 'src/app/core/components/app-errors/app-error.se
 export class AddCategoryComponent implements OnInit {
   @Input() availableCategories: ICategory[];
   @Output() newCategoryStatus = new EventEmitter<boolean>();
+  @Input() editCategory: ICategory;
   categoryName = '';
 
   constructor(
@@ -21,15 +22,40 @@ export class AddCategoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (this.editCategory) {
+      this.categoryName = this.editCategory.name;
+    } else {
+      this.categoryName = '';
+    }
   }
 
   onAdd(form: NgForm) {
     if (!this.availableCategories.find(cat => cat.name === form.value.name)) {
-      this.catService.addCategory(form.value);
+      if (this.editCategory) {
+        this.catService.updateCategory(this.editCategory.id, form.value);
+      } else {
+        this.catService.addCategory(form.value);
+      }
       this.newCategoryStatus.emit(false);
       form.reset();
     } else {
       this.appErrService.handleError({ subject: form.value.name, message: 'already exists.' });
+    }
+  }
+
+  onCancel() {
+    this.newCategoryStatus.emit(false);
+  }
+
+  checkNamesEquality() {
+    if (this.editCategory) {
+      if (this.editCategory.name !== this.categoryName) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
     }
   }
 

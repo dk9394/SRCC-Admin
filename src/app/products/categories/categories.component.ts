@@ -17,6 +17,7 @@ export class CategoriesComponent implements OnInit {
   isLoading: boolean;
   addNewCategory: boolean;
   catsSub: Subscription;
+  editCategory: ICategory;
 
   constructor(
     private catService: CategoriesService,
@@ -35,11 +36,25 @@ export class CategoriesComponent implements OnInit {
     this.catsSub = this.catService.fetchCategories()
       .subscribe((cats: ICategory[]) => {
         this.isLoading = false;
-        this.categories = cats ? cats : [];
+        this.categories = cats ? this.sortCategories(cats) : [];
       }, err => {
         this.appErrService.handleError({ subject: '', message: err.code });
       });
     this.handleSubs.dataSubcriptions.push(this.catsSub);
+  }
+
+  private sortCategories(cats: ICategory[]) {
+    return cats.sort((a, b) => {
+      const aName = a.name.toLowerCase();
+      const bName = b.name.toLowerCase();
+      if (aName < bName) {
+        return -1;
+      } else if (aName > bName) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
   }
 
   onCategory(cat: ICategory) {
@@ -47,8 +62,19 @@ export class CategoriesComponent implements OnInit {
     this.router.navigate([cat.id], { relativeTo: this.route });
   }
 
-  onAddNewCategory(status: boolean) {
+  onCategoryActionStatus(status: boolean) {
     this.addNewCategory = status;
+  }
+
+  onEditCategory(category: ICategory, e) {
+    e.stopPropagation();
+    this.editCategory = category;
+    this.addNewCategory = true;
+  }
+
+  onAddNewCategory() {
+    this.addNewCategory = true;
+    this.editCategory = null;
   }
 
 }
