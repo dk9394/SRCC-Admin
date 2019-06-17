@@ -12,7 +12,8 @@
             <ul class="main">
               <ng-container *ngIf="userSignedIn">
                 <li *ngFor="let nav of navLinks">
-                  <a [routerLink]="[nav.link]" routerLinkActive="active" (click)="onMobileNav()">{{ nav.name }}</a>
+                  <a *ngIf="nav.active" [routerLink]="[nav.link]" routerLinkActive="active"
+                    (click)="onMobileNav()">{{ nav.name }}</a>
                 </li>
               </ng-container>
             </ul>

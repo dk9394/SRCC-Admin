@@ -44,6 +44,7 @@ export class AuthService {
     this.handleSubs.handleSubcriptions();
     this.afAuth.auth.signOut()
       .then(res => {
+        this.adminService.admin = false;
         this.router.navigate(['/']);
         this.signInStatus.next(false);
         this.appErrService.handleSuccess({ subject: 'Logout', message: 'successful.' });

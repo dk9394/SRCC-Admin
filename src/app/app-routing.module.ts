@@ -8,6 +8,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
   { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
   { path: 'products', loadChildren: './products/products.module#ProductsModule', canLoad: [AuthGuard] },
+  { path: 'sell-product', loadChildren: './sell-product/sell-product.module#SellProductModule', canLoad: [AuthGuard] },
+  { path: 'sales', loadChildren: './sales/sales.module#SalesModule', canLoad: [AuthGuard] },
   { path: '**', redirectTo: 'auth' }
 ];
 

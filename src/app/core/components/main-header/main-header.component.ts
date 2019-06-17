@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationCancel } from '@angular/router';
 
 import { INavLink } from '../../models';
 import { Constants } from '../../constants';
 import { AuthService } from 'src/app/auth/auth.service';
+import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-main-header',
@@ -11,18 +11,36 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./main-header.component.scss']
 })
 export class MainHeaderComponent implements OnInit {
-  navLinks: INavLink[] = Constants.appNavLinks;
+  navLinks: INavLink[] = [];
   userSignedIn: boolean;
   isNavigationCancelEvent: boolean;
   activeHamburger: boolean;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private adminService: AdminService
+  ) { }
 
   ngOnInit() {
     this.authService.getSignInStatus()
       .subscribe((status: boolean) => {
         this.userSignedIn = status;
+        this.createNavLinks();
+        this.navLinksVisibility(this.adminService.admin);
       });
+  }
+
+  private createNavLinks() {
+    this.navLinks = [];
+    Constants.appNavLinks.forEach(link => {
+      this.navLinks.push({ ...link });
+    });
+  }
+
+  private navLinksVisibility(isAdmin: boolean) {
+    if (isAdmin) {
+      this.navLinks.forEach(link => link.active = true);
+    }
   }
 
   onMobileNav() {
