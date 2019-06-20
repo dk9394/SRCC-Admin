@@ -1,4 +1,4 @@
-import { INavLink } from './models';
+import { INavLink, ISellType } from './models';
 
 export class Constants {
   static appNavLinks: INavLink[] = [
@@ -10,6 +10,11 @@ export class Constants {
   static collections = {
     categoriesCollection: 'categories',
     productsCollection: 'products'
-  }
+  };
+
+  static sellTypes: ISellType[] = [
+    { code: 'sp', name: 'Shop Product', active: true },
+    { code: 'tpp', name: 'Third Party Product', active: false }
+  ];
 
 }

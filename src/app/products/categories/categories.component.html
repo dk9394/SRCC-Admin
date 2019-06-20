@@ -11,7 +11,7 @@
   <app-loading *ngIf="isLoading"></app-loading>
   <p *ngIf="categories?.length === 0">No product category found!</p>
 
-  <ul *ngIf="categories && !isLoading" class="list">
+  <ul *ngIf="categories && !isLoading" class="flex-list">
     <li *ngFor="let cat of categories" (click)="onCategory(cat)">
       {{ cat.name }}
       <span *ngIf="!addNewCategory && isAdmin" class="glyphicon glyphicon-pencil edit"

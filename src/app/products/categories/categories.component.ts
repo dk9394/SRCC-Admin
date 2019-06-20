@@ -70,8 +70,8 @@ export class CategoriesComponent implements OnInit {
     this.addNewCategory = status;
   }
 
-  onEditCategory(category: ICategory, e) {
-    e.stopPropagation();
+  onEditCategory(category: ICategory, event: Event) {
+    event.stopPropagation();
     this.editCategory = category;
     this.addNewCategory = true;
   }

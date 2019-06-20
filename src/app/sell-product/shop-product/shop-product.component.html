@@ -1,0 +1,24 @@
+<section>
+  <form [formGroup]="SellProductForm">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group">
+          <select id="categories" class="form-control" formControlName="categoryId" (change)="onCategory()">
+            <option value="null" selected>Select Category</option>
+            <option [value]="cat.id" *ngFor="let cat of categories">{{ cat.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-xs-6" *ngIf="products.length">
+        <div class="form-group">
+          <select id="categories" class="form-control" formControlName="productId">
+            <option value="null" selected>Select Product</option>
+            <option [value]="prod.name" *ngFor="let prod of products">{{ prod.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>

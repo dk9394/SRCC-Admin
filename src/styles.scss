@@ -3,6 +3,7 @@ $border-color: #e1e1e1;
 $nav-height: 70px;
 $breadcrumb-height: 40px;
 $title-color: #337ab7;
+$category-bg: $border-color;
 
 
 // Breakpoints
@@ -22,6 +23,48 @@ $desktop: 992px;
 
 .section-title {
     font-size: 125%;
+}
+
+ul.flex-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        min-width: 150px;
+        line-height: 70px;
+        padding: 0 20px;
+        box-sizing: border-box;
+        border: 1px solid $border-color;
+        margin: 0 20px 20px 0;
+        font-size: 125%;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+
+        &:hover,
+        &.active {
+            background: $category-bg;
+        }
+
+        &.add-new {
+            font-size: 300%;
+        }
+
+        .edit {
+            position: absolute;
+            z-index: 1;
+            display: block;
+            padding: 5px 10px 10px 5px;
+            left: 0;
+            top: 0;
+            font-size: 75%;
+            color: $title-color;
+        }
+    }
 }
 
 body.no-scroll {

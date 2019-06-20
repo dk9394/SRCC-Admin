@@ -1,3 +1,11 @@
-<p>
-  Sell Product - Comming Soon!!
-</p>
+<ul class="flex-list">
+  <li *ngFor="let sellType of sellProductTypes" [class.active]="sellType.active" (click)="onSellType(sellType.code)">
+    {{ sellType.name }}</li>
+</ul>
+<hr />
+<section class="product-description">
+  <ng-container *ngFor="let sellType of sellProductTypes">
+    <h1 class="page-title" *ngIf="sellType.active">{{ sellType.name }}</h1>
+  </ng-container>
+  <router-outlet></router-outlet>
+</section>
